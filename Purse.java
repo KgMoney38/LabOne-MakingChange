@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-//Mostly Done.
+//Done.
 
 public class Purse {
 
@@ -12,8 +12,6 @@ public class Purse {
   public Purse() {
     cash = new HashMap<>();
   }
-
-  private double amt;
 
   public void add(Denomination type, int num) {
     //Add
@@ -32,8 +30,14 @@ public class Purse {
     return cash;
   }
 
-  public double getValue() {
-    return amt;
+  public double getValue()
+  {
+    double total = 0.0;
+    for (Map.Entry<Denomination, Integer> entry : cash.entrySet())
+    {
+      total+= entry.getKey().amt() * entry.getValue();
+    }
+    return total;
   }
 
   public String toString()
